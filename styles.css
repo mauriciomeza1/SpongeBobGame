@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(245,213,15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+div{
+ justify-content: space-between;
+}
+
+#sponge{
+    position: absolute;
+    top: 100px;
+    right: 800px
+}
+
+#logo{
+    position: absolute;
+    width: 500px;
+
+}
+
+#buttons{
+    position: absolute;
+    top: 500px;
+    left: 850px;
+    width: 300px;
+}
+
+#play{
+    position: absolute;
+    bottom: 10px
+}
+
+#play, #inst{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+footer {
+    position: absolute;
+    top: 650px;
+    right: 200px;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Button from https://getcssscan.com/css-buttons-examples*/
+
+#play, #inst {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+
+i{
+    font-style: normal;
+    color: #F50057;
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+  }
