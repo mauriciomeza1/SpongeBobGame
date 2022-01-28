@@ -126,8 +126,8 @@ class Player {
             x: 0,
             y: 1
         }
-        this.width = 200
-        this.height = 200
+        this.width = 150
+        this.height = 150
 
         //WALK
         this.bobWalk1 = new Image()
@@ -524,8 +524,8 @@ function init() {
                 x: 0,
                 y: 1
             }
-            this.width = 200
-            this.height = 200
+            this.width = 150
+            this.height = 150
 
             //WALK
             this.bobWalk1 = new Image()
