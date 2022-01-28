@@ -2,7 +2,24 @@ let canvas = document.getElementById('myCanvas')
 let c = canvas.getContext('2d')
 let gravity = 0.7
 let frames = 0
-let bullets = []
+const imageEnemies = ["assets/images/enemies/jelly.gif"]
+const enemies = []
+
+class Obstacles {
+    constructor(y) {
+        this.y = y
+        this.x = 1600
+        this.width = 50
+        this.height = 50
+        this.image = new Image()
+        this.image.src = "./assets/images/enemies/jelly.gif"
+    }
+    draw() {
+        this.x--
+        c.drawImage(this.image, this.x, this.y, this.width, this.height)
+    }
+}
+
 
 
 class Background {
@@ -96,27 +113,7 @@ class Enemy2 extends Character {
 
 
 
-class FireBall {
-    constructor(x, y) {
-        this.x = x
-        this.y = y
-        this.width = 30
-        this.height = 30
-        this.image = new Image()
-        this.image.src = "assets/images/enemies/plankton/fireball.png"
-    }
-    draw() {
-        if (frames % 100 == 0){
-            bullets.push(new FireBall(plank.x, plank.y))
-            this.x += 10
-            c.drawImage(this.image, this.x, this.y, this.width, this.height)
-        }
-    }
-}
-
-
-
-const plank = new Enemy2(1000, 520, 110, 110)
+const plank = new Enemy2(1000, 400, 120, 120)
 
 class Player {
     constructor() {
@@ -504,16 +501,17 @@ function init() {
             this.image.src = "assets/images/enemies/plankton/fireball.png"
         }
         draw() {
-            if (frames % 100 == 0){
+            if (frames % 100 === 0){
                 bullets.push(new FireBall(plank.x, plank.y))
-                this.x += 10
+                this.x -= 10
                 c.drawImage(this.image, this.x, this.y, this.width, this.height)
             }
         }
     }
 
 
-    const plank = new Enemy2(1000, 520, 110, 110)
+    const fireball = new FireBall()
+    const plank = new Enemy2(1000, 400, 120, 120)
 
     class Player {
         constructor() {
@@ -794,18 +792,52 @@ function init() {
         x: 7500, y: 600, image: this.image
     })]
 
+
+
+    function generateObstacles() {
+        if (!(frames % 100 === 0)) return
+        const randomPosition =Number( Math.floor(Math.random() * (c.height - 0 + 1) + 0))
+        const jelly = new Obstacles(randomPosition)
+        enemies.push(jelly)
+        console.log(randomPosition)
+    }
+    
+        
+
+    function printObstacles() {
+        for(let obstacle of enemies) {
+            obstacle.draw()
+        }
+    }
+
+
+
     player.update()
 
     scrollOffset = 0
 
+    
 
 }
 
+function generateObstacles() {
+    if (!(frames % 100 === 0)) return
+    const randomPosition =Number( Math.floor(Math.random() * (700 - 0 + 1) + 0))
+    const jelly = new Obstacles(randomPosition)
+    enemies.push(jelly)
+}
 
+function printObstacles() {
+    for(let obstacle of enemies) {
+        obstacle.draw()
+    }
+}
 
 function animate() {
 
     frames++
+    
+    generateObstacles()
 
     requestAnimationFrame(animate)
     c.fillStyle = 'white'
@@ -815,11 +847,12 @@ function animate() {
         platform.draw()
     })
 
-
-
+    console.log(enemies)
+    
     plank.draw()
     player.update()
-
+    printObstacles()
+    
 
 
     if (keys.right.pressed && player.position.x < 400) {
